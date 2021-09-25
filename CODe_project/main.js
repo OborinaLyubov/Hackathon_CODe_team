@@ -12,31 +12,33 @@ let profile_name = document.getElementById('profile-name');
 let about_client = document.getElementById('about-client');
 let about_big_data = document.getElementById('about-big-data');
 let trans_list = document.getElementById('trans-list');
-
+let selected_role;
 
 let users = [
     {
         id: 0,
         data:{
             strahovka_num:111111,
-            strahovka_date: '18.04.21',
+            strahovka_date: '02.01.17',
             credit_num: 123123,
-            credit_date: '17.04.21'
+            credit_date: '01.01.17'
 
         },
-        created:'17.04.21',
         user: "Petrov Vasiliy Sergeevich",
         role: 'client',
-        transaction_list:[
-            '17.04.21',
-            '17.05.21',
-            '17.06.21',
-            '17.07.21'
-        ],
         transaction_details:{
-            date:[],
-            action:[],
-            date_end:[]
+            date:['01.01.17',
+                '02.01.17',
+                '22.01.17',
+                '23.02.18',
+                '24.03.18',
+                '25.04.19'],
+            action:['Заключение кредитного договора',
+                'Заключение страхового договора',
+                'Смена банка',
+                'Смена страховой компании',
+                'Смена клиента',
+                'Полное погашение кредита']
         }
 
     },
@@ -44,48 +46,53 @@ let users = [
         id: 1,
         data:{
             strahovka_num:222222,
-            strahovka_date: '03.03.21',
+            strahovka_date: '21.08.19',
             credit_num: 234234,
-            credit_date: '02.03.21'
+            credit_date: '21.08.19'
         },
-        created:'02.03.21',
         user: "Strahovaya companya №1",
         role: 'strahovka',
-        transaction_list:[
-            '02.03.21',
-            '02.04.21',
-            '02.05.21',
-            '02.06.21'
-        ],
         transaction_details:{
-            date:[],
-            action:[],
-            date_end:[]
+            date:['21.08.19',
+                '21.08.19',
+                '22.08.20',
+                '23.08.20',
+                '24.09.20',
+                '23.09.21'],
+            action:['Заключение кредитного договора',
+                'Заключение страхового договора',
+                'Смена банка',
+                'Смена страховой компании',
+                'Смена клиента',
+                'Полное погашение кредита']
         }
     },
     {
         id: 2,
         data:{
             strahovka_num:333333,
-            strahovka_date: '26.06.21',
+            strahovka_date: '21.07.19',
             credit_num: 345345,
-            credit_date: '25.06.21'
+            credit_date: '21.06.19'
         },
-        created:'25.06.21',
         user: "Bank №1",
         role: 'bank',
-        transaction_list:[
-            '25.06.21',
-            '25.07.21',
-            '25.08.21',
-            '25.09.21'
-        ],
         transaction_details:{
-            date:[],
-            action:[],
-            date_end:[]
+            date:['21.06.19',
+                '21.07.19',
+                '22.06.20',
+                '23.06.20',
+                '24.06.20',
+                '23.09.21',
+            ],
+            action:['Заключение кредитного договора',
+                'Заключение страхового договора',
+                'Смена банка',
+                'Смена страховой компании',
+                'Смена клиента',
+                'Полное погашение кредита']
         }
-    },
+    }
 ];
 
 client_role.addEventListener('click',function (){
@@ -100,7 +107,7 @@ bank_role.addEventListener('click',function (){
     find_by_role('bank');
 });
 
-btn_change_data_client.addEventListener('click',function (){
+/*btn_change_data_client.addEventListener('click',function (){
     toggle();
 });
 
@@ -110,19 +117,29 @@ btn_change_big_data.addEventListener('click',function (){
 
 btn_close_popup.addEventListener('click',function (){
     toggle();
-});
+});*/
 
 btn_show_trans_data.addEventListener('click',function (){
-    show_user_data('client');
+    show_user_data(selected_role);
 });
 
 function show_user_data(role){
     let index = users.indexOf(users.find(fnd => fnd.role == role));
-    about_client.innerText = 'Данные:';
-    about_client.innerText += `\nНомер страхового договора: ${users[index].data.strahovka_num}
-    Дата страхового договора: ${users[index].data.strahovka_date}
-    Номер кредитного договора: ${users[index].data.credit_num}
-    Дата кредитного договора: ${users[index].data.credit_date}`;
+    let index_trans = users[index].transaction_details.date.indexOf(trans_list.value);
+    let transaction_date = users[index].transaction_details.date[index_trans];
+    let transaction_action = users[index].transaction_details.action[index_trans];
+    if(transaction_date != undefined && transaction_action!=undefined){
+        about_big_data.innerText = 'Данные о транзакции:\n';
+        about_big_data.innerText += `Дата транзакции: ${transaction_date}\nДействие: ${transaction_action}`;
+        about_client.innerText = 'Данные о пользователе:';
+        about_client.innerText += `\nНомер страхового договора: ${users[index].data.strahovka_num}
+        Дата страхового договора: ${users[index].data.strahovka_date}
+        Номер кредитного договора: ${users[index].data.credit_num}
+        Дата кредитного договора: ${users[index].data.credit_date}`;
+    }else {
+        alert('Выберите транзакцию из списка!');
+    }
+
 }
 
 
@@ -132,9 +149,10 @@ function find_by_role(finding_role){
     role_name.innerText += ` ${users[index].role}`;
     profile_name.innerText += ` ${users[index].user}`;
     trans_list.innerHTML='';
-    for(let i = 0; i < users[index].transaction_list.length; i++){
-        trans_list.innerHTML += `<option>${users[index].transaction_list[i]}</option>`
+    for(let i = users[index].transaction_details.date.length-1; i >= 0 ; i--){
+        trans_list.innerHTML += `<option>${users[index].transaction_details.date[i]}</option>`
     }
+    selected_role = finding_role;
 }
 
 function profile_clear(){
@@ -142,9 +160,10 @@ function profile_clear(){
     profile_name.innerText = `Название(ФИО):`;
 }
 
+/*
 function toggle(){
     let blur = document.getElementById('blur');
     blur.classList.toggle('active');
     let popup = document.getElementById('popup');
     popup.classList.toggle('active');
-}
+}*/
