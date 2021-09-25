@@ -107,20 +107,17 @@ bank_role.addEventListener('click',function (){
     find_by_role('bank');
 });
 
-/*btn_change_data_client.addEventListener('click',function (){
-    toggle();
-});
-
-btn_change_big_data.addEventListener('click',function (){
-    toggle();
-});
-
-btn_close_popup.addEventListener('click',function (){
-    toggle();
-});*/
 
 btn_show_trans_data.addEventListener('click',function (){
     show_user_data(selected_role);
+});
+
+btn_change_data_client.addEventListener('click',function (){
+   toggle('change-data-info');
+});
+
+btn_change_big_data.addEventListener('click',function (){
+    toggle('change-transaction-info');
 });
 
 function show_user_data(role){
@@ -128,20 +125,19 @@ function show_user_data(role){
     let index_trans = users[index].transaction_details.date.indexOf(trans_list.value);
     let transaction_date = users[index].transaction_details.date[index_trans];
     let transaction_action = users[index].transaction_details.action[index_trans];
-    if(transaction_date != undefined && transaction_action!=undefined){
+    if(transaction_date != undefined && transaction_action!=undefined) {
         about_big_data.innerText = 'Данные о транзакции:\n';
         about_big_data.innerText += `Дата транзакции: ${transaction_date}\nДействие: ${transaction_action}`;
+    }
+    else {
+        alert('Выберите транзакцию из списка!');
+    }
         about_client.innerText = 'Данные о пользователе:';
         about_client.innerText += `\nНомер страхового договора: ${users[index].data.strahovka_num}
         Дата страхового договора: ${users[index].data.strahovka_date}
         Номер кредитного договора: ${users[index].data.credit_num}
         Дата кредитного договора: ${users[index].data.credit_date}`;
-    }else {
-        alert('Выберите транзакцию из списка!');
-    }
-
 }
-
 
 function find_by_role(finding_role){
     let index = users.indexOf(users.find(fnd => fnd.role == finding_role));
@@ -160,10 +156,7 @@ function profile_clear(){
     profile_name.innerText = `Название(ФИО):`;
 }
 
-/*
-function toggle(){
-    let blur = document.getElementById('blur');
-    blur.classList.toggle('active');
-    let popup = document.getElementById('popup');
-    popup.classList.toggle('active');
-}*/
+function toggle(id) {
+    let change_block = document.getElementById(id);
+    change_block.classList.toggle('active');
+}
