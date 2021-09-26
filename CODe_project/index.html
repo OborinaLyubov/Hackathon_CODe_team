@@ -15,6 +15,20 @@
         <div class="data-client"> <!-- Данные о клиенте -->
             <p id="about-client">Данные о пользователе:</p>
             <button id="change-data-client">Изменить данные</button>
+            <div id="change-data-info">
+                <h3>Изменить данные о пользователе:</h3>
+                <p>Название(ФИО):</p>
+                <input id="name-changer">
+                <p>Номер страхового договора:</p>
+                <input id="strahovka-number-changer">
+                <p>Дата страхового договора:</p>
+                <input id="strahovka-data-changer">
+                <p>Номер кредитного договора:</p>
+                <input id="credit-number-changer">
+                <p>Дата кредитного договора:</p>
+                <input id="credit-data-changer">
+                <button id="apply-change-data-info">✓</button>
+            </div>
         </div>
         <div class="transactions"> <!-- Список транзакций -->
             <ul id="list-roles">
@@ -30,7 +44,6 @@
                 <p id="select"><select name="list1" id="trans-list" multiple>
                 </select></p>
                 <button id="show-trans-data">Просмотр</button>
-
         </div>
         <div class="big-data"> <!-- Данные о транзакциях -->
             <p id="about-big-data">Данные о транзакции: </p>
@@ -42,23 +55,14 @@
                 <input id="transaction-date">
                 <p>Действие:</p>
                 <input id="transaction-action">
+                <button id="apply-change-transaction-info">✓</button>
+            </div>
+            <div id="yvedomleniya">
+                <h3>Уведомления:</h3>
+
             </div>
         </div>
-
-
 </div>
-        <!--<div id="popup"> &lt;!&ndash; Всплывающее окно &ndash;&gt;
-            <label for="name">Введите ФИО:</label>
-            <input id="name">
-            <label for="strahovka-number" >Введите номер страхового договора:</label>
-            <input type="number" id="strahovka-number">
-            <label for="credit-number">Введите номер кредитного договора:</label>
-            <input type="number" id="credit-number">
-            <label for="date-change">Введите дату изменения:</label>
-            <input id="date-change" type="date">
-            <button id="close-popup">Изменить</button>
-        </div>-->
-
 <script src="main.js"></script>
 </body>
 </html>

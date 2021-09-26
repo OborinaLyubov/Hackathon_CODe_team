@@ -29,7 +29,7 @@ button{
     left: 30%;
     top: 0;
     width: 70%;
-    height: 300px;
+    height: 400px;
     border: 1px solid black;
     font-size: 25px;
 }
@@ -47,9 +47,9 @@ button{
 .big-data{
     position: absolute;
     left: 30%;
-    top: 300px;
+    top: 400px;
     width: 70%;
-    height: 600px;
+    height: 500px;
     border: 1px solid black;
     font-size: 25px;
 }
@@ -67,8 +67,8 @@ button{
 
 #change-data-client{
     position: absolute;
-    top: 5%;
-    right: 5%;
+    bottom: 5%;
+    left: 30px;
 }
 
 #delete-big-data{
@@ -159,41 +159,6 @@ li{
     visibility: visible;
 }
 
-#popup input,
-#popup label{
-    font-size: 25px;
-    height: 30px;
-    margin: 10px;
-    width: 80%;
-}
-
-#popup input{
-    border: solid 3px #000000;
-    border-radius: 20px;
-    outline: none;
-    padding: 0 20px;
-    text-align: center;
-}
-
-#popup p{
-    margin-top: 5%;
-}
-
-#close-popup{
-    background-color: #000000;
-    border: 0px;
-    border-radius: 20px;
-    color: white;
-    font-size: 20px;
-    height: 45px;
-    margin: 30px;
-    width: 50%;
-}
-
-
-#close-popup:hover{
-    background-color: #000000;
-}
 
 #select{
     margin-top: 20px;
@@ -215,9 +180,11 @@ li{
 
 #change-transaction-info{
     position: absolute;
-    right: 5%;
+    left: 40%;
     top: 5%;
     text-align: center;
+    visibility: hidden;
+    height: 300px;
 
 }
 
@@ -229,4 +196,67 @@ li{
 
 #change-transaction-info p{
     margin: 15px 0 5px 0;
+}
+
+#change-transaction-info.active{
+    visibility: visible;
+}
+
+#change-data-info{
+    position: absolute;
+    top: 0;
+    right: 5%;
+    height: 400px;
+    text-align: center;
+    font-size: 20px;
+    visibility: hidden;
+}
+
+#change-data-info p,
+#change-data-info input{
+    margin: 3px;
+}
+
+#change-data-info input{
+    height: 30px;
+    width: 200px;
+}
+
+#change-data-info.active{
+    visibility: visible;
+}
+
+#yvedomleniya{
+    position: absolute;
+    right: 5%;
+    top: 5%;
+    width: 25%;
+    height: 450px;
+    text-align: center;
+}
+
+#yvedomleniya p{
+    margin: 15px 0 0 0;
+}
+
+#apply-change-data-info{
+    position: absolute;
+    right: 1%;
+    bottom: 7%;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    font-size: 25px;
+}
+
+#apply-change-transaction-info{
+    position: absolute;
+    right: 99px;
+    bottom: 7%;
+    width: 50px;
+    height: 50px;
+    background-color: green;
+    color: white;
+    font-size: 25px;
 }
