@@ -1,0 +1,10 @@
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\bin\Debug\netcoreapp3.1\BlockChainLib.deps.json
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\bin\Debug\netcoreapp3.1\BlockChainLib.dll
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\bin\Debug\netcoreapp3.1\BlockChainLib.pdb
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.csproj.AssemblyReference.cache
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.AssemblyInfoInputs.cache
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.AssemblyInfo.cs
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.csproj.CoreCompileInputs.cache
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.dll
+C:\Users\lyubo\source\repos\BlockChainLib\BlockChainLib\obj\Debug\netcoreapp3.1\BlockChainLib.pdb
