@@ -10,4 +10,5 @@
 ### Используемые библиотеки
 
 * [GitHub/API-C#](https://github.com/blockchain/api-v1-client-csharp)
-* [GitHub/Smart-contract](https://github.com/blockstack/stacks)
+* [Библиотека смарт-контрактов Stratis](https://github.com/blockstack/stacks)
+* [Пример создания смарт-контракта](https://github.com/stratisproject/CirrusSmartContracts)
