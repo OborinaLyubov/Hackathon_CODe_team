@@ -29,42 +29,51 @@ namespace BlockChainLib.Models.Standarts
             get => PersistentState.GetString(nameof(this.Symbol));
             private set => PersistentState.SetString(nameof(this.Symbol), value); 
         }
-        /*Contract Contract(Address address) 
+        public Contract GetContract(Address address)
         {
-            
-        };*/
+            return PersistentState.GetStruct<Contract>(address.ToString());
+        }
 
-        public bool TransferTo(Address to, Contract contract)
+        private void SetContract(Address address, Contract contract)
         {
-            if (contract == null)
+            PersistentState.SetStruct<Contract>(address.ToString(), contract);
+        }
+
+        public bool TransferTo(Address to, Contract? contract)
+        {
+            if (contract.HasValue)
             {
-                Log(new TransferLog { From = Message.Sender, To = to, Contract = null });
+                Log(new TransferLog { From = Message.Sender, To = to, Contract = contract.Value });
                 return true;
             }
-            Log(new TransferLog { From = Message.Sender, To = to, Contract = contract });
+            Contract senderContract = GetContract(Message.Sender);
+            SetContract(Message.Sender, senderContract);
+            Log(new TransferLog { From = Message.Sender, To = to, Contract = contract.Value });
             return true;  
         }
 
-        public bool TransferFrom(Address from, Address to, Contract contract)
+        public bool TransferFrom(Address from, Address to, Contract? contract)
         {
-            if (contract == null)
+            if (contract.HasValue)
             {
-                Log(new TransferLog { From = from, To = to, Contract = null });
+                Log(new TransferLog { From = from, To = to, Contract = contract.Value });
 
                 return true;
             }
 
-            ulong senderAllowance = Allowance(from, Message.Sender);
-            
+            Contract senderAllowance = Allowance(from, Message.Sender);
+            Contract fromContract = GetContract(from);
+            SetApproval(from, Message.Sender, senderAllowance);
+            SetContract(from, fromContract);
 
-            Log(new TransferLog { From = from, To = to, Contract = contract });
+            Log(new TransferLog { From = from, To = to, Contract = contract.Value });
 
             return true;
         }
 
         public bool Approve(Address spender, Contract currentContract, Contract contract)
         {
-            if (Allowance(Message.Sender, spender) != currentContract)
+            if (Allowance(Message.Sender, spender) == currentContract)
             {
                 return false;
             }
@@ -78,13 +87,15 @@ namespace BlockChainLib.Models.Standarts
 
         private void SetApproval(Address owner, Address spender, Contract contract)
         {
-            PersistentState.SetUInt64($"Allowance:{owner}:{spender}", contract);
+            PersistentState.SetStruct<Contract>($"Allowance:{owner}:{spender}", contract);
         }
 
-        public ulong Allowance(Address owner, Address spender)
+        public Contract Allowance(Address owner, Address spender)
         {
-            return PersistentState.GetUInt64($"Allowance:{owner}:{spender}");
+            return PersistentState.GetStruct<Contract>($"Allowance:{owner.ToString()}:{spender.ToString()}");
         }
+
+        public static bool operator ==(Contract c1, Contract c2);
 
         public struct TransferLog
         {
@@ -104,9 +115,9 @@ namespace BlockChainLib.Models.Standarts
             [Index]
             public Address Spender;
 
-            public ulong OldContract;
+            public Contract OldContract;
 
-            public ulong Contract;
+            public Contract Contract;
         }
     } 
 }

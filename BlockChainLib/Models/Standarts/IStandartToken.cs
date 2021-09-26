@@ -12,12 +12,12 @@ namespace BlockChainLib.Models.Standarts
         /// </summary>
         ulong TotalSupply { get; }
 
-        /*/// <summary>
+        /// <summary>
         /// Договор по указанному адресу
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
-        Contract Contract(Address address);*/
+        Contract Contract(Address address);
 
         /// <summary>
         /// Переводит ли принадлежащие отправителю токены на адрес назначения
