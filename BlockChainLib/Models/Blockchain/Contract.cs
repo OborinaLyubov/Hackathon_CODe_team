@@ -51,33 +51,6 @@ namespace BlockChainLib.Models.Blockchain
         /// Страховые риски
         /// </summary>
         public InsuranceRisk InsuranceRisk { get; private set; }
-
-        /*public bool Equals(Contract other)
-        {
-            return Equals(other, this);
-        }
-
-        public override bool Equals(object obj)
-        {
-            if (obj == null || GetType() != obj.GetType())
-            {
-                return false;
-            }
-
-            var objectToCompareWith = (Contract)obj;
-
-            return objectToCompareWith.FIOInsurent == FIOInsurent && objectToCompareWith.NumberCreditContract == NumberCreditContract &&
-                   objectToCompareWith.DateCreditContract == DateCreditContract && objectToCompareWith.NumberInsuranceContract == NumberInsuranceContract
-                   && objectToCompareWith.DateInsurancyContract == DateInsurancyContract && objectToCompareWith.SumInsured == SumInsured
-                    && objectToCompareWith.DatePayment == DatePayment && objectToCompareWith.SumPayment == SumPayment && objectToCompareWith.InsuranceRisk == InsuranceRisk;
-
-        }
-
-        public override int GetHashCode()
-        {
-            var calculation = FIOInsurent + NumberCreditContract + DateCreditContract + NumberInsuranceContract + DateInsurancyContract + SumInsured + DatePayment + SumPayment + InsuranceRisk;
-            return calculation.GetHashCode();
-        }*/
     }
 
     /// <summary>

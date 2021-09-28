@@ -17,7 +17,7 @@ namespace BlockChainLib.Models.Standarts
         /// </summary>
         /// <param name="address"></param>
         /// <returns></returns>
-        Contract Contract(Address address);
+        Contract GetContract(Address address);
 
         /// <summary>
         /// Переводит ли принадлежащие отправителю токены на адрес назначения
@@ -25,7 +25,7 @@ namespace BlockChainLib.Models.Standarts
         /// <param name="to"></param>
         /// <param name="contract"></param>
         /// <returns></returns>
-        bool TransferTo(Address to, Contract contract);
+        bool TransferTo(Address to, Contract? contract);
 
         /// <summary>
         /// Переносит ли токены, принадлежащие одному адресу, на другой адрес
@@ -34,7 +34,7 @@ namespace BlockChainLib.Models.Standarts
         /// <param name="to"></param>
         /// <param name="contract"></param>
         /// <returns></returns>
-        bool TransferFrom(Address from, Address to, Contract contract);
+        bool TransferFrom(Address from, Address to, Contract? contract);
 
         /// <summary>
         /// Может ли отправитель отправлять определенный контракт по токену
@@ -51,6 +51,6 @@ namespace BlockChainLib.Models.Standarts
         /// <param name="owner"></param>
         /// <param name="spender"></param>
         /// <returns></returns>
-        ulong Allowance(Address owner, Address spender);
+        Contract Allowance(Address owner, Address spender);
     }
 }

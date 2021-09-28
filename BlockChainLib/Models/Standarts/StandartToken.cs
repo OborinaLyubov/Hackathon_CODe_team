@@ -12,6 +12,7 @@ namespace BlockChainLib.Models.Standarts
             this.TotalSupply = totalSupply;
             this.Name = name;
             this.Symbol = symbol;
+            this.SetContract(Message.Sender, Contract);
         }
 
         public ulong TotalSupply 
@@ -73,7 +74,7 @@ namespace BlockChainLib.Models.Standarts
 
         public bool Approve(Address spender, Contract currentContract, Contract contract)
         {
-            if (Allowance(Message.Sender, spender) == currentContract)
+            if (currentContract.Equals(Allowance(Message.Sender, spender)))
             {
                 return false;
             }
@@ -85,7 +86,7 @@ namespace BlockChainLib.Models.Standarts
             return true;
         }
 
-        private void SetApproval(Address owner, Address spender, Contract contract)
+        public void SetApproval(Address owner, Address spender, Contract contract)
         {
             PersistentState.SetStruct<Contract>($"Allowance:{owner}:{spender}", contract);
         }
@@ -94,8 +95,6 @@ namespace BlockChainLib.Models.Standarts
         {
             return PersistentState.GetStruct<Contract>($"Allowance:{owner.ToString()}:{spender.ToString()}");
         }
-
-        public static bool operator ==(Contract c1, Contract c2);
 
         public struct TransferLog
         {
