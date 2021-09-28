@@ -1,18 +1,16 @@
-### Основной стек технологий
+### Core technology stack
 
 * GitHub, Trello, Git
 * C#, WebAPI, UnitTests
 * HTML, CSS, JavaScript
 
-### Используемые библиотеки
+### Used libraries
 
 * [GitHub/API-C#](https://github.com/blockchain/api-v1-client-csharp)
-* [Библиотека смарт-контрактов Stratis](https://github.com/stratisproject/Stratis.SmartContracts)
-* [Пример создания смарт-контракта](https://github.com/stratisproject/CirrusSmartContracts)
+* [Smart-contracts library Stratis](https://github.com/stratisproject/Stratis.SmartContracts)
+* [Example of creating a smart-contract](https://github.com/stratisproject/CirrusSmartContracts)
 
-### Разработчики
+### Developers
 
 * [Иванов Артем](https://github.com/nolo7e) 
-* [Владимир Иванютенко](https://github.com/Golwetl)
 * [Худякова Любовь](https://github.com/KhudyakovaLyubov)
-* [Анатолий Оборин](https://github.com/AnatoliyOborin)
