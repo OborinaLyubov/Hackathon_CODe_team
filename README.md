@@ -13,4 +13,6 @@
 ### Developers
 
 * [Иванов Артем](https://github.com/nolo7e) 
+* [Владимир Иванютенко](https://github.com/Golwetl)
 * [Худякова Любовь](https://github.com/KhudyakovaLyubov)
+* [Анатолий Оборин](https://github.com/AnatoliyOborin)
